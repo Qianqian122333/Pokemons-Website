@@ -5,7 +5,7 @@ import PokeCardSkeleton from "./PokeCardSkeleton";
 import PokeCardContainer from "./PokeCardContainer";
 
 const PokeGrid = () => {
-  const { pokemons, error, isLoading } = usePokemons();
+  const { data: pokemons, error, isLoading } = usePokemons();
   const skeleton = [1, 2, 3, 4, 5, 6, 7, 8];
   return (
     <>

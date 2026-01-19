@@ -1,8 +1,7 @@
-import { list } from "@chakra-ui/react";
 import useColors from "../hooks/usePokeColor";
 
 const ColorList = () => {
-  const { colors, error, isLoading } = useColors();
+  const { data: colors, error, isLoading } = useColors();
   return (
     <div>
       {colors.map((color) => (
