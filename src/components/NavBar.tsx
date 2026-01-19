@@ -1,10 +1,11 @@
 import { HStack, Text } from "@chakra-ui/react";
+import ColorModeSwitch from "./ColorModeSwitch";
 
 const NavBar = () => {
   return (
-    <HStack>
+    <HStack justifyContent={"space-between"} padding={"10px"}>
       <h1>Pokémon</h1>
-      <Text>NavBar</Text>
+      <ColorModeSwitch />
     </HStack>
   );
 };
