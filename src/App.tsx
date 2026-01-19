@@ -12,13 +12,15 @@ function App() {
   return (
     <Grid
       templateAreas={{
-        base: `"nav"
-                  "main"
-                  "footer"`,
-        lg: `"nav nav"
-                  "aside main"
-                  "footer footer"`,
+        base: `"nav" "main" "footer"`,
+        lg: `"nav nav" "aside main" "footer footer"`,
       }}
+      templateRows="auto 1fr auto"
+      templateColumns={{
+        base: "1fr",
+        lg: "250px 1fr",
+      }}
+      minH="100vh"
     >
       <GridItem area={"nav"}>
         <NavBar />

@@ -19,7 +19,7 @@ const ColorList = ({ onSelectColor, selectedColor }: ColorListProps) => {
 
   return (
     <List padding={"15px"}>
-      <Heading fontSize="xl" marginBottom={3}>
+      <Heading fontSize="xl" marginBottom={3} textAlign="center">
         Colors
       </Heading>
       {colors.map((color) => (
