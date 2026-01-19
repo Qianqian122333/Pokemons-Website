@@ -40,7 +40,7 @@ const PokeCard = ({ pokemon }: PokeCardProps) => {
   }, [pokemon.url]);
 
   return (
-    <Card borderRadius={10}>
+    <Card>
       <Image
         src={details?.sprites.other["official-artwork"].front_default}
         alt={pokemon.name}

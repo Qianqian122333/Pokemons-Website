@@ -2,7 +2,7 @@ import { Card, CardBody, Skeleton, SkeletonText } from "@chakra-ui/react";
 
 const PokeCardSkeleton = () => {
   return (
-    <Card borderRadius={10}>
+    <Card>
       <Skeleton height="200px" />
       <CardBody>
         <SkeletonText />
