@@ -1,17 +1,22 @@
-import { Text } from "@chakra-ui/react";
+import { SimpleGrid, Text } from "@chakra-ui/react";
 import usePokemons from "../hooks/usePokemons";
+import PokeCard from "./PokeCard";
 
 const PokeGrid = () => {
   const { pokemons, error } = usePokemons();
   return (
-    <div>
-      <ul>
+    <>
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 4 }}
+        spacing={10}
+        padding={"10px"}
+      >
         {pokemons.map((pokemon) => (
-          <li key={pokemon.name}>{pokemon.name}</li>
+          <PokeCard key={pokemon.name} pokemon={pokemon} />
         ))}
-      </ul>
+      </SimpleGrid>
       {error && <Text>{error}</Text>}
-    </div>
+    </>
   );
 };
 
