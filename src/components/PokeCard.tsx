@@ -5,6 +5,7 @@ import {
   Image,
   Badge,
   HStack,
+  Text,
 } from "@chakra-ui/react";
 import { Pokemon } from "../hooks/usePokemons";
 import { useEffect, useState } from "react";
@@ -14,6 +15,7 @@ interface PokeCardProps {
 }
 
 interface PokemonDetail {
+  base_experience: number;
   sprites: {
     other: {
       "official-artwork": {
@@ -45,17 +47,33 @@ const PokeCard = ({ pokemon }: PokeCardProps) => {
       />
       <CardBody>
         <Heading fontSize="2xl">{pokemon.name}</Heading>
-        <HStack mt={2}>
-          {details?.types.map((t) => (
-            <Badge
-              key={t.type.name}
-              fontSize="14px"
-              paddingX={2}
-              borderRadius={4}
-            >
-              {t.type.name}
-            </Badge>
-          ))}
+        <HStack mt={2} justifyContent={"space-between"}>
+          <HStack spacing={2} direction="row">
+            {details?.types.map((t) => (
+              <Badge
+                key={t.type.name}
+                fontSize="14px"
+                paddingX={2}
+                borderRadius={4}
+              >
+                {t.type.name}
+              </Badge>
+            ))}
+          </HStack>
+
+          <Text
+            fontSize="14px"
+            fontWeight="bold"
+            color={
+              (details?.base_experience || 0) > 200
+                ? "green.300"
+                : (details?.base_experience || 0) > 100
+                  ? "yellow.500"
+                  : "gray.500"
+            }
+          >
+            EXP : {details?.base_experience}
+          </Text>
         </HStack>
       </CardBody>
     </Card>

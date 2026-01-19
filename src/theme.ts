@@ -10,6 +10,12 @@ const config: ThemeConfig = {
 };
 
 // 3. extend the theme
-const theme = extendTheme({ config });
+const theme = extendTheme({
+  config,
+  fonts: {
+    heading: `'Comfortaa', sans-serif`,
+    body: `'Comfortaa', sans-serif`,
+  },
+});
 
 export default theme;
