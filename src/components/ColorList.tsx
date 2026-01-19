@@ -9,8 +9,9 @@ import {
 import useColors, { Color } from "../hooks/usePokeColor";
 interface ColorListProps {
   onSelectColor: (color: String) => void;
+  selectedColor?: String | null;
 }
-const ColorList = ({ onSelectColor }: ColorListProps) => {
+const ColorList = ({ onSelectColor, selectedColor }: ColorListProps) => {
   const { data: colors, error, isLoading } = useColors();
 
   if (error) return null;
@@ -31,6 +32,7 @@ const ColorList = ({ onSelectColor }: ColorListProps) => {
               fontWeight="normal" // 字体不需要太粗，保持舒适
               fontSize="lg"
               variant="link"
+              color={selectedColor === color.name ? "gray.500" : "inherit"}
             >
               {color.name}
             </Button>

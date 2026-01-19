@@ -5,7 +5,6 @@ import PokeGrid from "./components/PokeGrid";
 import ColorList from "./components/ColorList";
 import Footer from "./components/Footer";
 import { useState } from "react";
-import { Color } from "./hooks/usePokeColor";
 function App() {
   const [selectedColor, setSelectedColor] = useState<String | null>(null);
   return (
@@ -24,7 +23,10 @@ function App() {
       </GridItem>
       <Show above="lg">
         <GridItem area={"aside"}>
-          <ColorList onSelectColor={(color) => setSelectedColor(color)} />
+          <ColorList
+            onSelectColor={(color) => setSelectedColor(color)}
+            selectedColor={selectedColor}
+          />
         </GridItem>
       </Show>
       <GridItem area={"main"}>
