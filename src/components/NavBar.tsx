@@ -4,7 +4,7 @@ import ColorModeSwitch from "./ColorModeSwitch";
 const NavBar = () => {
   return (
     <HStack justifyContent={"space-between"} padding={"10px"}>
-      <Heading fontSize="2xl">Pokémon</Heading>
+      <Heading fontSize="4xl">Pokémon</Heading>
       <ColorModeSwitch />
     </HStack>
   );

@@ -25,7 +25,7 @@ function App() {
         <NavBar />
       </GridItem>
       <Show above="lg">
-        <GridItem bg="pink.300" area={"aside"}>
+        <GridItem area={"aside"}>
           <ColorList />
         </GridItem>
       </Show>
