@@ -1,6 +1,7 @@
 import "./App.css";
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
+import PokeGrid from "./components/PokeGrid";
 function App() {
   return (
     <Grid
@@ -28,7 +29,7 @@ function App() {
         </GridItem>
       </Show>
       <GridItem bg="green.300" area={"main"}>
-        Main
+        <PokeGrid />
       </GridItem>
       <GridItem bg="blue.300" area={"footer"}>
         Footer
