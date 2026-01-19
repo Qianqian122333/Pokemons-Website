@@ -3,7 +3,11 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import PokeGrid from "./components/PokeGrid";
 import ColorList from "./components/ColorList";
+import Footer from "./components/Footer";
+import { useState } from "react";
+import { Color } from "./hooks/usePokeColor";
 function App() {
+  const [selectedColor, setSelectedColor] = useState<String | null>(null);
   return (
     <Grid
       templateAreas={{
@@ -14,26 +18,20 @@ function App() {
                   "aside main"
                   "footer footer"`,
       }}
-      // gridTemplateRows={"50px 1fr 30px"}
-      // gridTemplateColumns={"150px 1fr"}
-      // h="200px"
-      // gap="1"
-      // color="blackAlpha.700"
-      // fontWeight="bold"
     >
       <GridItem area={"nav"}>
         <NavBar />
       </GridItem>
       <Show above="lg">
         <GridItem area={"aside"}>
-          <ColorList />
+          <ColorList onSelectColor={(color) => setSelectedColor(color)} />
         </GridItem>
       </Show>
       <GridItem area={"main"}>
-        <PokeGrid />
+        <PokeGrid selectedColor={selectedColor} />
       </GridItem>
-      <GridItem bg="blue.300" area={"footer"}>
-        Footer
+      <GridItem area={"footer"}>
+        <Footer />
       </GridItem>
     </Grid>
   );

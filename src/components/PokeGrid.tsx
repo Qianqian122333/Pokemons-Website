@@ -3,9 +3,12 @@ import usePokemons from "../hooks/usePokemons";
 import PokeCard from "./PokeCard";
 import PokeCardSkeleton from "./PokeCardSkeleton";
 import PokeCardContainer from "./PokeCardContainer";
+interface PokeGridProps {
+  selectedColor?: String | null;
+}
 
-const PokeGrid = () => {
-  const { data: pokemons, error, isLoading } = usePokemons();
+const PokeGrid = ({ selectedColor }: PokeGridProps) => {
+  const { data: pokemons, error, isLoading } = usePokemons(selectedColor);
   const skeleton = [1, 2, 3, 4, 5, 6, 7, 8];
   return (
     <>
