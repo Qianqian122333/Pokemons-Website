@@ -11,7 +11,7 @@ const PokeGrid = () => {
     <>
       <SimpleGrid
         columns={{ sm: 1, md: 2, xl: 4 }}
-        spacing={10}
+        spacing={5}
         padding={"10px"}
       >
         {pokemons.map((pokemon) => (
