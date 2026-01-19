@@ -5,10 +5,15 @@ import PokeCardSkeleton from "./PokeCardSkeleton";
 import PokeCardContainer from "./PokeCardContainer";
 interface PokeGridProps {
   selectedColor?: String | null;
+  selectedType?: String | null;
 }
 
-const PokeGrid = ({ selectedColor }: PokeGridProps) => {
-  const { data: pokemons, error, isLoading } = usePokemons(selectedColor);
+const PokeGrid = ({ selectedColor, selectedType }: PokeGridProps) => {
+  const {
+    data: pokemons,
+    error,
+    isLoading,
+  } = usePokemons(selectedColor, selectedType);
   const skeleton = [1, 2, 3, 4, 5, 6, 7, 8];
   return (
     <>
@@ -17,11 +22,12 @@ const PokeGrid = ({ selectedColor }: PokeGridProps) => {
         spacing={5}
         padding={"10px"}
       >
-        {pokemons.map((pokemon) => (
-          <PokeCardContainer key={pokemon.name}>
-            <PokeCard pokemon={pokemon} />
-          </PokeCardContainer>
-        ))}
+        {pokemons &&
+          pokemons.map((pokemon) => (
+            <PokeCardContainer key={pokemon.name}>
+              <PokeCard pokemon={pokemon} />
+            </PokeCardContainer>
+          ))}
         {isLoading &&
           skeleton.map((s) => (
             <PokeCardContainer key={s}>

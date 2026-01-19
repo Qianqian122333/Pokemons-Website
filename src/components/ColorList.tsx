@@ -6,7 +6,7 @@ import {
   Button,
   Heading,
 } from "@chakra-ui/react";
-import useColors, { Color } from "../hooks/usePokeColor";
+import useColors from "../hooks/usePokeColor";
 interface ColorListProps {
   onSelectColor: (color: String) => void;
   selectedColor?: String | null;

@@ -1,12 +1,14 @@
 import "./App.css";
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import PokeGrid from "./components/PokeGrid";
 import ColorList from "./components/ColorList";
 import Footer from "./components/Footer";
 import { useState } from "react";
+import TypeSelector from "./components/TypeSelector";
 function App() {
   const [selectedColor, setSelectedColor] = useState<String | null>(null);
+  const [selectedType, setSelectedType] = useState<String | null>(null);
   return (
     <Grid
       templateAreas={{
@@ -30,7 +32,10 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area={"main"}>
-        <PokeGrid selectedColor={selectedColor} />
+        <Box padding={"10px"}>
+          <TypeSelector onSelectType={(type) => setSelectedType(type)} />
+        </Box>
+        <PokeGrid selectedColor={selectedColor} selectedType={selectedType} />
       </GridItem>
       <GridItem area={"footer"}>
         <Footer />
