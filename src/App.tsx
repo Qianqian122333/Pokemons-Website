@@ -1,5 +1,5 @@
 import "./App.css";
-import { Box, Grid, GridItem, Show, useDisclosure } from "@chakra-ui/react";
+import { Grid, GridItem, HStack, Show, useDisclosure } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import PokeGrid from "./components/PokeGrid";
 import ColorList from "./components/ColorList";
@@ -8,6 +8,7 @@ import { useState } from "react";
 import TypeSelector from "./components/TypeSelector";
 import { Pokemon } from "./hooks/usePokemons";
 import PokeDetailModal from "./components/PokeDetailModal";
+import PokeHeading from "./components/PokeHeading";
 function App() {
   const [selectedColor, setSelectedColor] = useState<String | null>(null);
   const [selectedType, setSelectedType] = useState<String | null>(null);
@@ -29,23 +30,39 @@ function App() {
       minH="100vh"
     >
       <GridItem area={"nav"}>
-        <NavBar onSearch={(searchText) => setSearchText(searchText)} />
+        <NavBar
+          onSearch={(searchText) => {
+            setSearchText(searchText);
+            setSelectedColor(null);
+            setSelectedType(null);
+          }}
+        />
       </GridItem>
       <Show above="lg">
         <GridItem area={"aside"}>
           <ColorList
-            onSelectColor={(color) => setSelectedColor(color)}
+            onSelectColor={(color) => {
+              setSelectedColor(color);
+              setSearchText(null);
+            }}
             selectedColor={selectedColor}
           />
         </GridItem>
       </Show>
       <GridItem area={"main"}>
-        <Box padding={"10px"}>
+        <HStack padding={"10px"} justifyContent={"space-between"}>
           <TypeSelector
-            onSelectType={(type) => setSelectedType(type)}
+            onSelectType={(type) => {
+              setSelectedType(type);
+              setSearchText(null);
+            }}
             selectedType={selectedType}
           />
-        </Box>
+          <PokeHeading
+            selectedColor={selectedColor}
+            selectedType={selectedType}
+          />
+        </HStack>
         <PokeGrid
           selectedColor={selectedColor}
           selectedType={selectedType}
