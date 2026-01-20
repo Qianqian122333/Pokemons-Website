@@ -1,4 +1,4 @@
-import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { Input, InputGroup, InputLeftElement, Icon } from "@chakra-ui/react";
 import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 
@@ -16,9 +16,9 @@ const SearchBar = ({ onSearch }: Props) => {
         if (ref.current) onSearch(ref.current.value);
       }}
     >
-      <InputGroup>
+      <InputGroup size={{ base: "md", lg: "lg" }}>
         <InputLeftElement pointerEvents="none">
-          <BsSearch />
+          <Icon as={BsSearch as any} />
         </InputLeftElement>
         <Input
           ref={ref}

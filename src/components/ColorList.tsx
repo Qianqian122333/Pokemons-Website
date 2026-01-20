@@ -6,7 +6,7 @@ import {
   Button,
   Heading,
 } from "@chakra-ui/react";
-import useColors from "../hooks/usePokeColor";
+import useColors, { Color } from "../hooks/usePokeColor";
 interface ColorListProps {
   onSelectColor: (color: String) => void;
   selectedColor?: String | null;
@@ -22,7 +22,7 @@ const ColorList = ({ onSelectColor, selectedColor }: ColorListProps) => {
       <Heading fontSize="xl" marginBottom={3} textAlign="center">
         Colors
       </Heading>
-      {colors.map((color) => (
+      {colors.map((color: Color) => (
         <ListItem key={color.name} paddingY="10px">
           <HStack justifyContent={"center"}>
             <Button

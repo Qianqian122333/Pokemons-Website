@@ -7,8 +7,7 @@ import {
   MenuList,
   Spinner,
 } from "@chakra-ui/react";
-import useTypes from "../hooks/useTypes";
-import { S } from "framer-motion/dist/types.d-CQ4vRM6h";
+import useTypes, { Type } from "../hooks/useTypes";
 
 interface Props {
   onSelectType?: (type: string) => void;
@@ -27,7 +26,7 @@ const TypeSelector = ({ onSelectType, selectedType }: Props) => {
       </MenuButton>
       <MenuList>
         {isLoading && <Spinner ml={4} my={2} />}
-        {data.map((type) => (
+        {data.map((type: Type) => (
           <MenuItem
             onClick={() => onSelectType && onSelectType(type.name)}
             key={type.name}

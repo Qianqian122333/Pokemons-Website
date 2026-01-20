@@ -30,17 +30,17 @@ const Footer = () => {
         <Text fontSize="sm">© {year} PokeWeb. All rights reserved.</Text>
         <Stack direction={"row"} spacing={6}>
           <Text display="flex" alignItems="center">
-            <Icon as={FaHeart} color="red.400" mr={2} />
+            <Icon as={FaHeart as any} color="red.400" mr={2} />
             Developed with love
           </Text>
           <Link href={"https://github.com/Qianqian122333"} isExternal>
-            <Icon as={FaGithub} boxSize={5} />
+            <Icon as={FaGithub as any} boxSize={5} />
           </Link>
           <Link
             href={"https://www.linkedin.com/in/qianqianwei112233/"}
             isExternal
           >
-            <Icon as={FaLinkedin} boxSize={5} />
+            <Icon as={FaLinkedin as any} boxSize={5} />
           </Link>
         </Stack>
       </Container>
