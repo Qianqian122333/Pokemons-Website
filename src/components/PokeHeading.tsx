@@ -1,11 +1,18 @@
-import { HStack, Tag, TagLabel } from "@chakra-ui/react";
+import { HStack, Tag, TagLabel, TagCloseButton } from "@chakra-ui/react";
 
 interface Props {
   selectedType?: String | null;
   selectedColor?: String | null;
+  onClearType: () => void;
+  onClearColor: () => void;
 }
 
-const PokeHeading = ({ selectedType, selectedColor }: Props) => {
+const PokeHeading = ({
+  selectedType,
+  selectedColor,
+  onClearType,
+  onClearColor,
+}: Props) => {
   if (!selectedType && !selectedColor) return null;
 
   return (
@@ -13,11 +20,13 @@ const PokeHeading = ({ selectedType, selectedColor }: Props) => {
       {selectedType && (
         <Tag size="lg" colorScheme="blue" borderRadius="full">
           <TagLabel>{selectedType}</TagLabel>
+          <TagCloseButton onClick={onClearType} />
         </Tag>
       )}
       {selectedColor && (
         <Tag size="lg" colorScheme="green" borderRadius="full">
           <TagLabel>{selectedColor}</TagLabel>
+          <TagCloseButton onClick={onClearColor} />
         </Tag>
       )}
     </HStack>

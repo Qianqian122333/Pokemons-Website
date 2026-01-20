@@ -61,6 +61,8 @@ function App() {
           <PokeHeading
             selectedColor={selectedColor}
             selectedType={selectedType}
+            onClearColor={() => setSelectedColor(null)}
+            onClearType={() => setSelectedType(null)}
           />
         </HStack>
         <PokeGrid
