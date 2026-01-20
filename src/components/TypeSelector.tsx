@@ -8,10 +8,11 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import useTypes from "../hooks/useTypes";
+import { S } from "framer-motion/dist/types.d-CQ4vRM6h";
 
 interface Props {
   onSelectType?: (type: string) => void;
-  selectedType?: string | null;
+  selectedType?: String | null;
 }
 
 const TypeSelector = ({ onSelectType, selectedType }: Props) => {

@@ -29,6 +29,7 @@ interface FetchResponse {
 const usePokemons = (
   selectedColor?: String | null,
   selectedType?: String | null,
+  searchText?: string | null,
 ) => {
   const [data, setData] = useState<Pokemon[]>([]);
   const [error, setError] = useState("");
@@ -41,8 +42,22 @@ const usePokemons = (
 
     const fetchPokemons = async () => {
       try {
+        if (searchText) {
+          const res = await apiClient.get<any>(
+            `/pokemon/${searchText.toLowerCase()}`,
+            {
+              signal: controller.signal,
+            },
+          );
+          setData([
+            {
+              name: res.data.name,
+              url: `https://pokeapi.co/api/v2/pokemon/${res.data.id}/`,
+            },
+          ]);
+        }
         // 情况1: 同时选择了颜色和类型 - 需要取交集
-        if (selectedColor && selectedType) {
+        else if (selectedColor && selectedType) {
           const [colorRes, typeRes] = await Promise.all([
             apiClient.get<ColorData>(`/pokemon-color/${selectedColor}`, {
               signal: controller.signal,
@@ -106,7 +121,7 @@ const usePokemons = (
     fetchPokemons();
 
     return () => controller.abort();
-  }, [selectedColor, selectedType]);
+  }, [selectedColor, selectedType, searchText]);
 
   return { data, error, isLoading };
 };

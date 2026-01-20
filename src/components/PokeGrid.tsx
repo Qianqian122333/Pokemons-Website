@@ -1,19 +1,26 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
-import usePokemons from "../hooks/usePokemons";
+import usePokemons, { Pokemon } from "../hooks/usePokemons";
 import PokeCard from "./PokeCard";
 import PokeCardSkeleton from "./PokeCardSkeleton";
 import PokeCardContainer from "./PokeCardContainer";
 interface PokeGridProps {
   selectedColor?: String | null;
   selectedType?: String | null;
+  searchText?: string | null;
+  onSelectPokemon: (pokemon: Pokemon) => void;
 }
 
-const PokeGrid = ({ selectedColor, selectedType }: PokeGridProps) => {
+const PokeGrid = ({
+  selectedColor,
+  selectedType,
+  searchText,
+  onSelectPokemon,
+}: PokeGridProps) => {
   const {
     data: pokemons,
     error,
     isLoading,
-  } = usePokemons(selectedColor, selectedType);
+  } = usePokemons(selectedColor, selectedType, searchText);
   const skeleton = [1, 2, 3, 4, 5, 6, 7, 8];
   return (
     <>
@@ -25,7 +32,10 @@ const PokeGrid = ({ selectedColor, selectedType }: PokeGridProps) => {
         {pokemons &&
           pokemons.map((pokemon) => (
             <PokeCardContainer key={pokemon.name}>
-              <PokeCard pokemon={pokemon} />
+              <PokeCard
+                pokemon={pokemon}
+                onClick={() => onSelectPokemon(pokemon)}
+              />
             </PokeCardContainer>
           ))}
         {isLoading &&

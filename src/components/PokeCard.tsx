@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 
 interface PokeCardProps {
   pokemon: Pokemon;
+  onClick: () => void;
 }
 
 interface PokemonDetail {
@@ -30,7 +31,7 @@ interface PokemonDetail {
   }[];
 }
 
-const PokeCard = ({ pokemon }: PokeCardProps) => {
+const PokeCard = ({ pokemon, onClick }: PokeCardProps) => {
   const [details, setDetails] = useState<PokemonDetail | null>(null);
 
   useEffect(() => {
@@ -40,7 +41,11 @@ const PokeCard = ({ pokemon }: PokeCardProps) => {
   }, [pokemon.url]);
 
   return (
-    <Card>
+    <Card
+      onClick={onClick}
+      cursor="pointer"
+      _hover={{ transform: "scale(1.03)", transition: "transform .15s ease-in" }}
+    >
       <Image
         src={details?.sprites.other["official-artwork"].front_default}
         alt={pokemon.name}
